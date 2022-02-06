@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:viato/backend/models/attraction.dart';
+import 'package:viato/backend/models/hotel.dart';
+import 'package:viato/backend/models/item.dart';
 import 'package:viato/backend/models/trip.dart';
 import 'package:viato/widgets/day_label.dart';
 import 'package:viato/widgets/info_card.dart';
@@ -34,6 +38,14 @@ class _TimelinePageState extends State<TimelinePage> {
     //   'endDate': DateTime(2022, 2, 8).toIso8601String(),
     //   'users': []
     // });
+
+    DateFormat formatter = DateFormat('jm');
+
+    final List<Item> events = [];
+    events.addAll(args.trip.hotels);
+    events.addAll(args.trip.attractions);
+    events.sort((a, b) => a.startTime.compareTo(b.startTime));
+
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -167,26 +179,19 @@ class _TimelinePageState extends State<TimelinePage> {
                 nodePosition: 0.05,
               ),
               builder: TimelineTileBuilder.fromStyle(
-                contentsAlign: ContentsAlign.basic,
-                contentsBuilder: (context, index) => Padding(
-                  padding: const EdgeInsets.all(24.0),
-                  child: Text('Timeline Event $index'),
-                ),
-                itemCount: args.trip.hotels
-                        .where((e) =>
-                            e.startTime.day ==
-                            args.trip.startDate
-                                .add(Duration(days: selectedIndex))
-                                .day)
-                        .length +
-                    args.trip.attractions
-                        .where((e) =>
-                            e.startTime.day ==
-                            args.trip.startDate
-                                .add(Duration(days: selectedIndex))
-                                .day)
-                        .length,
-              ),
+                  contentsAlign: ContentsAlign.basic,
+                  contentsBuilder: (context, index) => Padding(
+                        padding: const EdgeInsets.all(24.0),
+                        child: Text(
+                            '${events[index].name} - ${formatter.format(events[index].startTime)}'),
+                      ),
+                  itemCount: events
+                      .where((e) =>
+                          e.startTime.day ==
+                          args.trip.startDate
+                              .add(Duration(days: selectedIndex))
+                              .day)
+                      .length),
             ),
           ),
         ],

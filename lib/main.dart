@@ -6,6 +6,7 @@ import 'package:gql_dio_link/gql_dio_link.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:viato/backend/models/user.dart';
 import 'package:viato/backend/utils/static_queries.dart';
+import 'package:viato/pages/create_trip.dart';
 import 'package:viato/pages/home_page.dart';
 import 'package:viato/pages/login_page.dart';
 import 'package:viato/pages/timeline_page.dart';
@@ -45,6 +46,22 @@ class TripPlanner extends StatelessWidget {
         theme: ThemeData(
           canvasColor: Colors.white,
           primarySwatch: Colors.purple,
+          dialogTheme: DialogTheme(
+            backgroundColor: Colors.white,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            titleTextStyle: GoogleFonts.montserrat(
+              fontSize: 24,
+              color: Colors.black,
+              fontWeight: FontWeight.w700,
+            ),
+            contentTextStyle: GoogleFonts.montserrat(
+              fontSize: 16,
+              color: Colors.black.withOpacity(0.85),
+              fontWeight: FontWeight.w700,
+            ),
+          ),
           appBarTheme: AppBarTheme(
             color: Colors.white,
             iconTheme: const IconThemeData(
@@ -113,6 +130,7 @@ class TripPlanner extends StatelessWidget {
           HomePage.routeName: (context) => const HomePage(),
           LoginPage.routeName: (context) => const LoginPage(),
           TimelinePage.routeName: (context) => const TimelinePage(),
+          CreateTripPage.routeName: (context) => const CreateTripPage(),
         },
       ),
     );

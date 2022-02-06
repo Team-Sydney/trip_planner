@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:viato/backend/models/user.dart';
+import 'package:viato/pages/create_trip.dart';
 import 'package:viato/pages/timeline_page.dart';
 
 class HomePageArguments {
@@ -54,7 +55,8 @@ class _HomePageState extends State<HomePage> {
           ),
           SliverToBoxAdapter(
             child: InkWell(
-              onTap: () {},
+              onTap: () =>
+                  Navigator.pushNamed(context, CreateTripPage.routeName),
               child: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 16),
                 height: 64,
