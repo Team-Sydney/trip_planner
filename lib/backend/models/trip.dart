@@ -1,4 +1,6 @@
-import 'package:viato/backend/models/User.dart';
+import 'package:viato/backend/models/attraction.dart';
+import 'package:viato/backend/models/hotel.dart';
+import 'package:viato/backend/models/user.dart';
 
 class Trip {
   final int id;
@@ -7,15 +9,28 @@ class Trip {
   DateTime _startDate;
   DateTime _endDate;
   List<User> _users;
+  List<dynamic> tripUsers;
+  String _photoUrl;
+  List<Hotel> hotels;
+  List<Attraction> attractions;
 
   Trip.fromJson(Map<String, dynamic> json)
-      : id = json['id'],
+      : id = int.parse(json['id']),
         destination = json['destination'],
         _title = json['title'],
         _startDate = DateTime.parse(json['startDate']),
         _endDate = DateTime.parse(json['endDate']),
-        _users =
-            (json['users'] as List).map((user) => User.fromJson(user)).toList();
+        _users = ((json['users'] as List?) ?? [])
+            .map((user) => User.fromJson(user))
+            .toList(),
+        tripUsers = ((json['tripUsers'] as List?) ?? []),
+        _photoUrl = 'https://picsum.photos/id/${json['id'].toString()}/600',
+        hotels = ((json['hotels'] as List?) ?? [])
+            .map((hotel) => Hotel.fromJson(hotel))
+            .toList(),
+        attractions = ((json['attractions'] as List?) ?? [])
+            .map((attraction) => Attraction.fromJson(attraction))
+            .toList();
 
   Map<String, dynamic> toJson() => {
         'id': id,
@@ -49,4 +64,10 @@ class Trip {
   }
 
   List<User> get users => _users;
+
+  set photoUrl(String photoUrl) {
+    _photoUrl = photoUrl;
+  }
+
+  String get photoUrl => _photoUrl;
 }

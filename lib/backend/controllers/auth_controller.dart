@@ -19,12 +19,12 @@ class AuthController {
         await _signInWithApple();
         break;
       case LoginProvider.google:
-        await _signInWithGoogle();
+        await signInWithGoogle();
         break;
     }
   }
 
-  Future<void> _signInWithGoogle() async {
+  Future<Map<String, dynamic>> signInWithGoogle() async {
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
     if (googleUser == null) throw Exception('GoogleUser was NULL');
@@ -35,6 +35,16 @@ class AuthController {
     if (googleAuth.accessToken == null) {
       throw Exception('GoogleAuth.accessToken was NULL');
     }
+
+    return {
+      'email': googleUser.email,
+      'name': googleUser.displayName,
+    };
+  }
+
+  void printWrapped(String text) {
+    final pattern = RegExp('.{1,800}'); // 800 is the size of each chunk
+    pattern.allMatches(text).forEach((match) => print(match.group(0)));
   }
 
   String _generateNonce([int length = 32]) {

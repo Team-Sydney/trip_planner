@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "510394775191",
+    "project_id": "viato-66964",
+    "storage_bucket": "viato-66964.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:510394775191:android:5837a3ebefb1d1894b9bd2",
+        "android_client_info": {
+          "package_name": "com.sdne.viato"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "510394775191-2n3o8fk0cja0q287ihepg4d9bimee9vu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sdne.viato",
+            "certificate_hash": "22cf01c9e6e13ebec793252083520fc4143801f3"
+          }
+        },
+        {
+          "client_id": "510394775191-n5q6hlsmu7lfrfe6303rcc7j0ikjm7qq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6c8wl7VBSyHiHtT0gA4oeOqSKRwwFKCs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "510394775191-n5q6hlsmu7lfrfe6303rcc7j0ikjm7qq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

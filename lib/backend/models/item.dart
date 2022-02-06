@@ -6,12 +6,11 @@ class Item {
   DateTime startTime;
   DateTime endTime;
 
-  Item({
-    required this.id,
-    required this.name,
-    required this.address,
-    required this.url,
-    required this.startTime,
-    required this.endTime,
-  });
+  Item.fromJson(Map<String, dynamic> json)
+      : id = int.parse(json['id']),
+        name = json['name'],
+        address = json['address'],
+        url = json['url'],
+        startTime = DateTime.parse(json['start_time']),
+        endTime = DateTime.parse(json['end_time']);
 }

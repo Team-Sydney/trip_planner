@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>510394775191-aode3toqiog4kiu2kq4nc0pih2691ulo.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.510394775191-aode3toqiog4kiu2kq4nc0pih2691ulo</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>510394775191-2n3o8fk0cja0q287ihepg4d9bimee9vu.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBqsK4UbTEarb3TH6lQsdsIA8qCP1UyuQI</string>
+	<key>GCM_SENDER_ID</key>
+	<string>510394775191</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.sdne.viato</string>
+	<key>PROJECT_ID</key>
+	<string>viato-66964</string>
+	<key>STORAGE_BUCKET</key>
+	<string>viato-66964.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:510394775191:ios:5a61dea74bf8fb574b9bd2</string>
+</dict>
+</plist>

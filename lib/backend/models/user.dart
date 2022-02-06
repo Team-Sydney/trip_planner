@@ -8,17 +8,18 @@ class User {
   List<Trip> _trips;
 
   User.fromJson(Map<String, dynamic> json)
-      : id = json['id'],
-        _firstName = json['first_name'],
-        _lastName = json['last_name'],
+      : id = int.parse(json['id']),
+        _firstName = json['firstName'],
+        _lastName = json['lastName'],
         _email = json['email'],
-        _trips =
-            (json['trips'] as List).map((trip) => Trip.fromJson(trip)).toList();
+        _trips = ((json['trips'] as List?) ?? [])
+            .map((trip) => Trip.fromJson(trip['trip']))
+            .toList();
 
   Map<String, dynamic> toJson() => {
         'id': id,
-        'first_name': _firstName,
-        'last_name': _lastName,
+        'firstName': _firstName,
+        'lastName': _lastName,
         'email': _email,
         'trips': _trips,
       };

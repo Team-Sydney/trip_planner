@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:viato/backend/models/Trip.dart';
+import 'package:viato/backend/models/trip.dart';
 import 'package:viato/widgets/day_label.dart';
 import 'package:viato/widgets/info_card.dart';
 import 'package:timelines/timelines.dart';
@@ -24,24 +24,24 @@ class _TimelinePageState extends State<TimelinePage> {
 
   @override
   Widget build(BuildContext context) {
-    // final args =
-    //     ModalRoute.of(context)!.settings.arguments as TimelinePageArugments;
-    final TestTrip = Trip.fromJson({
-      'id': 0,
-      'destination': "Ottawa",
-      'title': "Trip to Ottawa 2022",
-      'startDate': DateTime(2022, 2, 4).toIso8601String(),
-      'endDate': DateTime(2022, 2, 8).toIso8601String(),
-      'users': []
-    });
+    final args =
+        ModalRoute.of(context)!.settings.arguments as TimelinePageArugments;
+    // final TestTrip = Trip.fromJson({
+    //   'id': '0',
+    //   'destination': "Ottawa",
+    //   'title': "Trip to Ottawa 2022",
+    //   'startDate': DateTime(2022, 2, 4).toIso8601String(),
+    //   'endDate': DateTime(2022, 2, 8).toIso8601String(),
+    //   'users': []
+    // });
     return Scaffold(
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
             pinned: true,
-            title: Text(TestTrip.title.toUpperCase()),
+            title: Text(args.trip.title.toUpperCase()),
             leading: IconButton(
-              onPressed: () {},
+              onPressed: () => Navigator.pop(context),
               icon: const Icon(Ionicons.chevron_back),
             ),
             actions: [
@@ -59,7 +59,7 @@ class _TimelinePageState extends State<TimelinePage> {
                 fit: StackFit.expand,
                 children: [
                   Image.network(
-                    'https://www.tripsavvy.com/thmb/wdR55uljRmHMCpM26xB6rdDxxI8=/4003x3002/smart/filters:no_upscale()/parliament-hill-in-ottawa--ontario--canada-1212275972-9f6f6e45ce084df89aaebf972e15b27b.jpg',
+                    args.trip.photoUrl,
                     fit: BoxFit.cover,
                   ),
                   Container(
@@ -81,7 +81,7 @@ class _TimelinePageState extends State<TimelinePage> {
                     alignment: Alignment.bottomLeft,
                     child: Container(
                       margin: const EdgeInsets.all(16.0),
-                      child: Text(TestTrip.destination.toUpperCase(),
+                      child: Text(args.trip.destination.toUpperCase(),
                           style: Theme.of(context).textTheme.headline1),
                     ),
                   ),
@@ -110,7 +110,7 @@ class _TimelinePageState extends State<TimelinePage> {
                   scrollDirection: Axis.horizontal,
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
-                  itemCount: 5,
+                  itemCount: args.trip.tripUsers.length,
                 ),
               ),
             ),
@@ -144,7 +144,7 @@ class _TimelinePageState extends State<TimelinePage> {
                 itemBuilder: ((context, index) {
                   return DayLabel(
                     dayIndex: index + 1,
-                    date: TestTrip.startDate.add(Duration(days: index)),
+                    date: args.trip.startDate.add(Duration(days: index)),
                     isSelected: index == selectedIndex,
                     onPressed: () {
                       setState(() {
@@ -154,7 +154,8 @@ class _TimelinePageState extends State<TimelinePage> {
                   );
                 }),
                 itemCount:
-                    TestTrip.endDate.difference(TestTrip.startDate).inDays + 1,
+                    args.trip.endDate.difference(args.trip.startDate).inDays +
+                        1,
               ),
             ),
           ),
@@ -171,7 +172,20 @@ class _TimelinePageState extends State<TimelinePage> {
                   padding: const EdgeInsets.all(24.0),
                   child: Text('Timeline Event $index'),
                 ),
-                itemCount: 10,
+                itemCount: args.trip.hotels
+                        .where((e) =>
+                            e.startTime.day ==
+                            args.trip.startDate
+                                .add(Duration(days: selectedIndex))
+                                .day)
+                        .length +
+                    args.trip.attractions
+                        .where((e) =>
+                            e.startTime.day ==
+                            args.trip.startDate
+                                .add(Duration(days: selectedIndex))
+                                .day)
+                        .length,
               ),
             ),
           ),
