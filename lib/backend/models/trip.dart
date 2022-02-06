@@ -1,4 +1,4 @@
-import 'package:trip_planner/backend/models/User.dart';
+import 'package:viato/backend/models/User.dart';
 
 class Trip {
   final int id;

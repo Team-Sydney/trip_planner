@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:trip_planner/pages/home_page.dart';
-import 'package:trip_planner/pages/login_page.dart';
-import 'package:trip_planner/pages/timeline_page.dart';
+import 'package:viato/pages/home_page.dart';
+import 'package:viato/pages/login_page.dart';
+import 'package:viato/pages/timeline_page.dart';
 
 void main() {
   runApp(const TripPlanner());

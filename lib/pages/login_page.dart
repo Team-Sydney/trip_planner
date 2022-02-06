@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:trip_planner/backend/controllers/auth_controller.dart';
-import 'package:trip_planner/widgets/login_button.dart';
+import 'package:viato/backend/controllers/auth_controller.dart';
+import 'package:viato/widgets/login_button.dart';
 
 class LoginPage extends StatefulWidget {
   static const routeName = '/login';

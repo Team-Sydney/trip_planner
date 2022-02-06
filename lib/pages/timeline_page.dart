@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:trip_planner/backend/models/Trip.dart';
-import 'package:trip_planner/widgets/day_label.dart';
-import 'package:trip_planner/widgets/info_card.dart';
+import 'package:viato/backend/models/Trip.dart';
+import 'package:viato/widgets/day_label.dart';
+import 'package:viato/widgets/info_card.dart';
 import 'package:timelines/timelines.dart';
 
 class TimelinePageArugments {

@@ -1,4 +1,4 @@
-import 'package:trip_planner/backend/models/item.dart';
+import 'package:viato/backend/models/item.dart';
 
 class Transportation extends Item {
   Transportation({
