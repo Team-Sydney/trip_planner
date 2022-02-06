@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:trip_planner/pages/home_page.dart';
 import 'package:trip_planner/pages/login_page.dart';
 import 'package:trip_planner/pages/timeline_page.dart';
@@ -14,12 +15,72 @@ class TripPlanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(builder: ((context, snapshot) {
-      String initalRoute =
-          snapshot.hasData ? HomePage.routeName : LoginPage.routeName;
+      String initalRoute = TimelinePage.routeName;
+      // snapshot.hasData ? HomePage.routeName : LoginPage.routeName;
       return MaterialApp(
         title: 'Trip Planner',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          canvasColor: Colors.white,
+          primarySwatch: Colors.purple,
+          appBarTheme: AppBarTheme(
+            color: Colors.white,
+            iconTheme: const IconThemeData(
+              color: Colors.black,
+            ),
+            titleTextStyle: GoogleFonts.montserrat(
+              color: Colors.black,
+              fontSize: 18,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+          textTheme: TextTheme(
+            headline1: GoogleFonts.montserrat(
+              fontSize: 32,
+              color: Colors.white,
+              fontWeight: FontWeight.w700,
+            ),
+            headline2: GoogleFonts.montserrat(
+              fontSize: 24,
+              color: Colors.black,
+              fontWeight: FontWeight.w700,
+            ),
+            headline3: GoogleFonts.montserrat(
+              fontSize: 16,
+              fontWeight: FontWeight.w700,
+            ),
+            headline4: GoogleFonts.montserrat(
+              fontSize: 14,
+              fontWeight: FontWeight.w700,
+            ),
+            headline5: GoogleFonts.montserrat(
+              fontSize: 12,
+              fontWeight: FontWeight.w700,
+            ),
+            headline6: GoogleFonts.montserrat(
+              fontSize: 10,
+              fontWeight: FontWeight.w700,
+            ),
+            bodyText1: GoogleFonts.montserrat(
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+            ),
+            bodyText2: GoogleFonts.montserrat(
+              fontSize: 14,
+              fontWeight: FontWeight.w400,
+            ),
+            button: GoogleFonts.montserrat(
+              fontSize: 14,
+              fontWeight: FontWeight.w700,
+            ),
+            caption: GoogleFonts.montserrat(
+              fontSize: 12,
+              fontWeight: FontWeight.w700,
+            ),
+            overline: GoogleFonts.montserrat(
+              fontSize: 10,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
         ),
         initialRoute: initalRoute,
         routes: {
