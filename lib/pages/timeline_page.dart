@@ -20,6 +20,8 @@ class TimelinePage extends StatefulWidget {
 }
 
 class _TimelinePageState extends State<TimelinePage> {
+  int selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     // final args =
@@ -29,7 +31,7 @@ class _TimelinePageState extends State<TimelinePage> {
       'destination': "Ottawa",
       'title': "Trip to Ottawa 2022",
       'startDate': DateTime(2022, 2, 4).toIso8601String(),
-      'endDate': DateTime(2022, 2, 6).toIso8601String(),
+      'endDate': DateTime(2022, 2, 8).toIso8601String(),
       'users': []
     });
     return Scaffold(
@@ -133,14 +135,22 @@ class _TimelinePageState extends State<TimelinePage> {
           SliverToBoxAdapter(
             child: SizedBox(
               height: 64,
-              child: ListView.builder(
-                padding: const EdgeInsets.only(left: 16),
+              child: ListView.separated(
+                separatorBuilder: (context, index) => const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 4.0),
+                ),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 scrollDirection: Axis.horizontal,
                 itemBuilder: ((context, index) {
                   return DayLabel(
                     dayIndex: index + 1,
                     date: TestTrip.startDate.add(Duration(days: index)),
-                    isSelected: index == 0,
+                    isSelected: index == selectedIndex,
+                    onPressed: () {
+                      setState(() {
+                        selectedIndex = index;
+                      });
+                    },
                   );
                 }),
                 itemCount:
@@ -148,12 +158,14 @@ class _TimelinePageState extends State<TimelinePage> {
               ),
             ),
           ),
+          const SliverPadding(padding: EdgeInsets.all(8)),
           SliverFillRemaining(
-            fillOverscroll: true,
             child: Timeline.tileBuilder(
+              theme: TimelineThemeData(
+                color: const Color(0xFF3B50F5),
+                nodePosition: 0.05,
+              ),
               builder: TimelineTileBuilder.fromStyle(
-                nodePositionBuilder: ((context, index) => 0.1),
-                endConnectorStyle: ConnectorStyle.solidLine,
                 contentsAlign: ContentsAlign.basic,
                 contentsBuilder: (context, index) => Padding(
                   padding: const EdgeInsets.all(24.0),
