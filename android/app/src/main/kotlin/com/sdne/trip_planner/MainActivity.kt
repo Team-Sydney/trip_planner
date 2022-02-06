@@ -1,4 +1,4 @@
-package com.sdne.trip_planner
+package com.sdne.viato
 
 import io.flutter.embedding.android.FlutterActivity
 
