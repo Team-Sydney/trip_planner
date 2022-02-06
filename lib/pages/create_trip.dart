@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:viato/backend/models/trip.dart';
+import 'package:viato/backend/models/user.dart';
 import 'package:viato/backend/utils/static_queries.dart';
+
+class CreateTripPageArguments {
+  final User user;
+
+  CreateTripPageArguments(this.user);
+}
 
 class CreateTripPage extends StatefulWidget {
   static const String routeName = '/create-trip';
@@ -20,6 +28,8 @@ class _CreateTripPageState extends State<CreateTripPage> {
 
   @override
   Widget build(BuildContext context) {
+    final CreateTripPageArguments args =
+        ModalRoute.of(context)?.settings.arguments as CreateTripPageArguments;
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -70,6 +80,13 @@ class _CreateTripPageState extends State<CreateTripPage> {
                     options: MutationOptions(
                       document: gql(StaticQueries.createTrip),
                       update: (GraphQLDataProxy cache, QueryResult? result) {
+                        if (result?.data != null) {
+                          Trip trip =
+                              Trip.fromJson(result!.data!['createTrip']);
+                          setState(() {
+                            args.user.trips.add(trip);
+                          });
+                        }
                         return cache;
                       },
                       onCompleted: (dynamic resultData) {

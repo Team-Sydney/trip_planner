@@ -10,7 +10,7 @@ class Item {
       : id = int.parse(json['id']),
         name = json['name'],
         address = json['address'],
-        url = json['url'],
-        startTime = DateTime.parse(json['start_time']),
-        endTime = DateTime.parse(json['end_time']);
+        url = json['url'] ?? '',
+        startTime = DateTime.parse(json['startDate']),
+        endTime = DateTime.parse(json['endDate']);
 }

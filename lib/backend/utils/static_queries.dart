@@ -44,8 +44,11 @@ class StaticQueries {
         startDate: \$startDate
         endDate: \$endDate
       }) {
+        id
         title
         destination
+        startDate
+        endDate
         tripUsers {
           user {
             firstName

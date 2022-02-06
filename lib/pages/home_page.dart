@@ -55,8 +55,9 @@ class _HomePageState extends State<HomePage> {
           ),
           SliverToBoxAdapter(
             child: InkWell(
-              onTap: () =>
-                  Navigator.pushNamed(context, CreateTripPage.routeName),
+              onTap: () => Navigator.pushNamed(
+                  context, CreateTripPage.routeName,
+                  arguments: CreateTripPageArguments(user)),
               child: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 16),
                 height: 64,
